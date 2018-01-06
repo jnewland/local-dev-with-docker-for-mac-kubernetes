@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: httpbin
+  namespace: httpbin
+spec:
+  rules:
+  - host: httpbin.127.0.0.1.xip.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: httpbin
+          servicePort: 8000
+  tls:
+  - hosts:
+    - httpbin.127.0.0.1.xip.io
+    secretName: httpbin-tls
